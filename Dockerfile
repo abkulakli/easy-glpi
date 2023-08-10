@@ -24,6 +24,8 @@ RUN chown -R mysql:mysql /data/mariadb
 COPY /mariadb/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY crontab/www-data /var/spool/cron/crontabs/www-data
 RUN chown -R www-data:crontab /var/spool/cron/crontabs/www-data
+COPY crontab/root /var/spool/cron/crontabs/root
+RUN chown -R root:crontab /var/spool/cron/crontabs/root
 RUN touch var/log/cron.log
 RUN chmod 666 var/log/cron.log
 VOLUME [ "/data"]
